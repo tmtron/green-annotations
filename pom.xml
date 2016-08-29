@@ -23,6 +23,7 @@
 
     <properties>
         <androidannotations-version>4.1.0</androidannotations-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
@@ -42,6 +43,11 @@
                 <artifactId>eventbus</artifactId>
                 <version>${project.version}</version>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.greenrobot</groupId>
+                <artifactId>eventbus</artifactId>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.androidannotations</groupId>
@@ -210,6 +216,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>1.4.1</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
                 <executions>
                     <execution>
                         <id>enforce-maven-version</id>
@@ -219,7 +228,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.0.5</version>
+                                    <version>3.3.9</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
@@ -234,6 +243,7 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>**/*.properties</include>
+                    <include>META-INF/**</include>
                 </includes>
             </resource>
         </resources>

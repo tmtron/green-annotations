@@ -10,9 +10,9 @@ import java.lang.annotation.Target;
  * Use it on fields of any enhanced class to injects a Greenrobot Eventbus.
  * </p>
  * <blockquote>
- *
+ * <p>
  * Example :
- *
+ * <p>
  * <pre>
  * &#064;EActivity
  * public class MyActivity extends Activity {

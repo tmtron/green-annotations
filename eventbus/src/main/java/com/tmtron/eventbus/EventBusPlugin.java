@@ -10,7 +10,12 @@ import java.util.List;
 
 public class EventBusPlugin extends AndroidAnnotationsPlugin {
 
-    private static final String NAME = "EventBus";
+    /**
+     * this will be used to find the properties files in the resources folder
+     * eventbus.properties, eventbus-api.properties
+     * thus we use lower-case
+     */
+    private static final String NAME = "eventbus";
 
     @Override
     public String getName() {

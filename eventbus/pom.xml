@@ -26,6 +26,10 @@
             <artifactId>androidannotations</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.greenrobot</groupId>
+            <artifactId>eventbus</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.tmtron</groupId>
             <artifactId>eventbus-api</artifactId>
         </dependency>
