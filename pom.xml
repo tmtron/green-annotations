@@ -139,8 +139,16 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.5.1</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <!--
+                            we use 1.7 so that we can use this with the default
+                            android settings
+                            otherwise we may see an error when we try to run
+                            the android app: "Dex cannot parse version 52 byte code"
+
+                            see also: http://stackoverflow.com/questions/37020413/android-dex-cannot-parse-version-52-byte-code
+                        -->
+                        <source>1.7</source>
+                        <target>1.7</target>
                     </configuration>
                 </plugin>
                 <plugin>

@@ -4,11 +4,11 @@ import com.helger.jcodemodel.*;
 import com.tmtron.eventbus.annotations.EventBus;
 import org.androidannotations.AndroidAnnotationsEnvironment;
 import org.androidannotations.ElementValidation;
-import org.androidannotations.annotations.EActivity;
 import org.androidannotations.handler.BaseAnnotationHandler;
 import org.androidannotations.handler.MethodInjectionHandler;
 import org.androidannotations.helper.InjectHelper;
 import org.androidannotations.holder.EComponentHolder;
+import org.androidannotations.holder.HasLifecycleMethods;
 import org.greenrobot.eventbus.Subscribe;
 
 import javax.lang.model.element.Element;
@@ -35,8 +35,10 @@ public class EventBusHandler
             return;
         }
 
+        validatorHelper.isNotPrivate(element, validation);
+
         List<String> allowedTypes = new ArrayList<>();
-        // org.greenrobot.eventbus.EventBus
+        // add allowed type: "org.greenrobot.eventbus.EventBus"
         allowedTypes.add(org.greenrobot.eventbus.EventBus.class.getCanonicalName());
         validatorHelper.allowedType(element, allowedTypes, validation);
     }
@@ -53,19 +55,43 @@ public class EventBusHandler
 
     @Override
     public void assignValue(JBlock targetBlock, IJAssignmentTarget fieldRef, EComponentHolder holder, Element element, Element param) {
+        // the InjectHelper will call this function
+        // * targetBlock is a block in the init-method (which is returned by @getInvocationBlock)
+        // * fieldRef is the field reference (this.bus) that is annotated with this EventBus annotation
+        // * element is the java-model element (which refers to the annotated element/field)
+
+        initEventBusMember(targetBlock, fieldRef, param);
+
+        if (holder instanceof HasLifecycleMethods) {
+            if (hasSubscribeAnnotation(element)) {
+                // we need to register/unregister the event-bus
+                handleEventBusRegistration(fieldRef, (HasLifecycleMethods) holder);
+            }
+        }
+    }
+
+    /**
+     * initializes the EventBus member variable in the init_ method
+     * with the default EventBus
+     */
+    private void initEventBusMember(JBlock targetBlock, IJAssignmentTarget fieldRef, Element param) {
         TypeMirror fieldType = param.asType();
+        // fieldTypeQualifiedName = "org.greenrobot.eventbus.EventBus"
         String fieldTypeQualifiedName = fieldType.toString();
 
         AbstractJClass eventBusClass = getJClass(fieldTypeQualifiedName);
+        // expression = org.greenrobot.eventbus.EventBus.getDefault()
         IJExpression expression = eventBusClass.staticInvoke("getDefault");
+        // statement = this.bus = org.greenrobot.eventbus.EventBus.getDefault()
         IJStatement statement = fieldRef.assign(expression);
         targetBlock.add(statement);
+    }
 
-        // bus
-        //System.err.println("element name: " + element.toString());
-        // com.tmtron.dscontrol.MainActivity
-        //System.err.println("enclosing element name: " + element.getEnclosingElement().toString());
-
+    /**
+     * returns true when the element has at least one method that uses
+     * the @Subsribe annotation
+     */
+    private boolean hasSubscribeAnnotation(Element element) {
         boolean hasSubscribeAnnotation = false;
         List<? extends Element> enclosedElements = element.getEnclosingElement().getEnclosedElements();
         for (Element enclosedElement : enclosedElements) {
@@ -78,20 +104,18 @@ public class EventBusHandler
                 break;
             }
         }
-        if (hasSubscribeAnnotation) {
-            // we need to register/unregister the event-bus
-            if (element.getEnclosingElement().getAnnotation(EActivity.class) != null) {
-//                JBlock registerBlock = null;
-//                JBlock unregisterBlock = null;
-//
-//                registerBlock = holder.getOnStartAfterSuperBlock();
-//                unregisterBlock = holder.getOnStopBeforeSuperBlock();
-//
-//                registerBlock.invoke(element, "registerReceiver").arg(receiverField).arg(intentFilterField);
-//                unregisterBlock.invoke(broadcastManager, "unregisterReceiver").arg(receiverField);
-            }
-        }
+        return hasSubscribeAnnotation;
+    }
 
+    /**
+     * adds register/unregister calls for the eventbus to the onStart/onStop methods
+     */
+    private void handleEventBusRegistration(IJAssignmentTarget fieldRef, HasLifecycleMethods holder) {
+        HasLifecycleMethods holderWithLifecycleMethods = holder;
+        JBlock onStartBlock = holderWithLifecycleMethods.getOnStartAfterSuperBlock();
+        JBlock onStopBlock = holderWithLifecycleMethods.getOnStopBeforeSuperBlock();
+        onStartBlock.invoke(fieldRef, "register").arg(JExpr._this());
+        onStopBlock.invoke(fieldRef, "unregister").arg(JExpr._this());
     }
 
     @Override
