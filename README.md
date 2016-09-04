@@ -1,14 +1,15 @@
-# androidannotations-greenrobot
+# Green Annotations
 
-this is a testproject to learn how to develop a plugin for [Android Annotations](http://androidannotations.org/)
+An [Android Annotations](http://androidannotations.org/) plugin to support [Green Robot](http://greenrobot.org/).
 
-first test is to develop an annotation for the [Greenrobot Eventbus](http://greenrobot.org/eventbus/)
+This is a testproject to learn how to develop a plugin for [Android Annotations](http://androidannotations.org/).  
+The first test is to develop an annotation for the [Greenrobot Eventbus](http://greenrobot.org/eventbus/)
 
 DO NOT USE FOR PRODUCTION!
 
-## usage in your Android Studio project:
+## Usage in your Android Studio project:
 
-in the build.gradle file of the module project:
+In the `build.gradle` file of the module project:
 
     dependencies {
         // Android Annotations for Greenrobot
