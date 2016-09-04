@@ -29,6 +29,7 @@
     <modules>
         <module>green-annotations</module>
         <module>green-annotations-api</module>
+        <module>green-annotations-test</module>
     </modules>
 
     <dependencyManagement>
@@ -211,7 +212,7 @@
                     <version>4.4.1</version>
                     <configuration>
                         <sdk>
-                            <platform>16</platform>
+                            <platform>17</platform>
                         </sdk>
                         <disableConflictingDependenciesWarning>true</disableConflictingDependenciesWarning>
                     </configuration>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.tmtron.greenannotations.test"
+          android:versionCode="1"
+          android:versionName="1.0.0-SNAPSHOT" xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk
+            android:minSdkVersion="17"
+            android:targetSdkVersion="17" tools:ignore="OldTargetApi"/>
+
+    <application>
+        <activity android:name=".GreenEventBusActivity_" />
+    </application>
+
+</manifest>

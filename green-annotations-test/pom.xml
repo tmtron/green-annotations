@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.tmtron</groupId>
+        <artifactId>green-annotations-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>green-annotations-test</artifactId>
+    <packaging>apk</packaging>
+    <name>GreenAnnotations plugin functional test suite</name>
+
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+        <checkstyle.excludes>**/R.java,**/BuildConfig.java,</checkstyle.excludes>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.tmtron</groupId>
+            <artifactId>green-annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tmtron</groupId>
+            <artifactId>green-annotations-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.greenrobot</groupId>
+            <artifactId>eventbus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.robolectric</groupId>
+            <artifactId>robolectric</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>fest-android</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.simpligility.maven.plugins</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <!--
+                <version>4.4.1</version>
+                <configuration>
+                    <sdk>
+                        <platform>17</platform>
+                        <path>/home/tmtron/Android/Sdk</path>
+                    </sdk>
+                    <disableConflictingDependenciesWarning>true</disableConflictingDependenciesWarning>
+                </configuration>
+                <extensions>true</extensions>
+                -->
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
