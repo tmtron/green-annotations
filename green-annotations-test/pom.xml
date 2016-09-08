@@ -17,8 +17,8 @@
     <properties>
         <main.basedir>${project.parent.basedir}</main.basedir>
         <checkstyle.excludes>**/R.java,**/BuildConfig.java,</checkstyle.excludes>
+        <android.sdk.path>${env.ANDROID_HOME}</android.sdk.path>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.tmtron</groupId>
@@ -64,18 +64,7 @@
             <plugin>
                 <groupId>com.simpligility.maven.plugins</groupId>
                 <artifactId>android-maven-plugin</artifactId>
-                <!--
-                <version>4.4.1</version>
-                <configuration>
-                    <sdk>
-                        <platform>17</platform>
-                        <path>/home/tmtron/Android/Sdk</path>
-                    </sdk>
-                    <disableConflictingDependenciesWarning>true</disableConflictingDependenciesWarning>
-                </configuration>
-                <extensions>true</extensions>
-                -->
-            </plugin>
+             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
