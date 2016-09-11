@@ -6,24 +6,61 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.simpligility.maven</groupId>
-        <artifactId>progressive-organization-pom</artifactId>
-        <version>4.1.0</version>
-    </parent>
-
     <groupId>com.tmtron</groupId>
     <artifactId>green-annotations-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <name>GreenRobot AndroidAnnotations parent</name>
     <description>An AndroidAnnotations plugin to support GreenRobot</description>
-
+    <inceptionYear>2016</inceptionYear>
+    <url>https://github.com/tmtron/green-annotations</url>
     <packaging>pom</packaging>
 
+    <issueManagement>
+        <url>https://github.com/tmtron/green-annotations/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>tmtron</id>
+            <email>${owner.email}</email>
+            <name>${owner.name}</name>
+            <url>https://github.com/tmtron</url>
+            <organization>TmTron</organization>
+            <organizationUrl>http://www.tmtron.com</organizationUrl>
+            <timezone>Europe/Vienna</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/tmtron/green-annotations</url>
+        <connection>scm:git:git://github.com/tmtron/green-annotations.git</connection>
+        <developerConnection>scm:git:git@github.com:tmtron/green-annotations.git</developerConnection>
+    </scm>
+
     <properties>
+        <owner.name>Martin Trummer</owner.name>
+        <owner.email>martin.trummer@tmtron.com</owner.email>
         <androidannotations-version>4.1.0</androidannotations-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <compiler.java.source.version>1.7</compiler.java.source.version>
+        <!--
+            we use 1.7 so that we can use this with the default android settings
+            otherwise we may see an error when we try to run
+            the android app: "Dex cannot parse version 52 byte code"
+
+            see also: http://stackoverflow.com/questions/37020413/android-dex-cannot-parse-version-52-byte-code
+        -->
+        <compiler.java.target.version>1.7</compiler.java.target.version>
     </properties>
 
     <modules>
@@ -140,16 +177,9 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.5.1</version>
                     <configuration>
-                        <!--
-                            we use 1.7 so that we can use this with the default
-                            android settings
-                            otherwise we may see an error when we try to run
-                            the android app: "Dex cannot parse version 52 byte code"
-
-                            see also: http://stackoverflow.com/questions/37020413/android-dex-cannot-parse-version-52-byte-code
-                        -->
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>${compiler.java.source.version}</source>
+                        <target>${compiler.java.target.version}</target>
+                        <showWarnings>true</showWarnings>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -197,6 +227,9 @@
                     <version>2.17</version>
                 </plugin>
                 <plugin>
+                    <!--
+                        cross-reference of the projects sources
+                        http://maven.apache.org/jxr/maven-jxr-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
                     <version>2.5</version>
@@ -220,27 +253,37 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.4.1</version>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
+                    <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                    <properties>
+                        <owner>${owner.name}</owner>
+                        <email>${owner.email}</email>
+                    </properties>
+                    <excludes>
+                        <exclude>**/README</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                        <exclude>src/main/resources/**</exclude>
+                    </excludes>
+                    <mapping>
+                        <!--
+                            just use /* not /**
+                            see: http://code.mycila.com/license-maven-plugin/
+                            see: http://code.mycila.com/license-maven-plugin/
+                            see: http://code.mycila.com/license-maven-plugin/
+                        -->
+                        <java>SLASHSTAR_STYLE</java>
+                    </mapping>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>enforce-maven-version</id>
                         <goals>
-                            <goal>enforce</goal>
+                            <goal>check</goal>
                         </goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>3.3.9</version>
-                                </requireMavenVersion>
-                            </rules>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
