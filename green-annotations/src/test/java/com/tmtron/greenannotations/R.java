@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package java.greenannotations;
+package com.tmtron.greenannotations;
 
 /**
  * This dummy R class is needed for the JUnit tests.
  * <p></p>
  * If it does not exist, the tests will fail with this error:
  * <pre>
- * java.lang.AssertionError: Expected no errors, found error: The generated java.greenannotations.R class cannot be found
+ * java.lang.AssertionError: Expected no errors, found error: The generated com.tmtron.greenannotations.R class cannot be found
  * </pre>
  */
 public class R {
