@@ -23,6 +23,6 @@ import org.greenrobot.eventbus.EventBus;
 class SomeEbeanError {
 
     @EventBusGreenRobot
-    public String bus;
+    public String eventBus;
 
 }

@@ -17,11 +17,12 @@
 package com.tmtron.greenannotations;
 
 import org.androidannotations.internal.AndroidAnnotationProcessor;
-import org.androidannotations.testutils.AAProcessorTestHelper;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EventBusGreenRobotTest extends AAProcessorTestHelper {
+import java.io.IOException;
+
+public class EventBusGreenRobotTest extends ProcessorTestHelper {
 
     @Before
     public void setUp() {
@@ -35,18 +36,41 @@ public class EventBusGreenRobotTest extends AAProcessorTestHelper {
     }
 
     @Test
-    public void activitySubclassInManifestCompiles() {
-        assertCompilationSuccessful(compileFiles(
+    public void activityHasBusInitialisation() {
+        CompileResult compileResult = compileFiles(
                 SomeActivity.class,
                 SomeEbean.class
-        ));
+        );
+        assertCompilationSuccessful(compileResult);
+        assertGeneratedClassContainsBusInitialisation(SomeActivity.class);
+        assertGeneratedClassDoesNotContainBusRegistration(SomeActivity.class);
+
+        assertGeneratedClassContainsBusInitialisation(SomeEbean.class);
+        assertGeneratedClassDoesNotContainBusRegistration(SomeEbean.class);
+    }
+
+    @Test
+    public void activityHasBusRegistration() {
+        CompileResult compileResult = compileFiles(
+                SomeActivityWithSubsriber.class,
+                SomeEbean.class
+        );
+        assertCompilationSuccessful(compileResult);
+        assertGeneratedClassContainsBusInitialisation(SomeActivityWithSubsriber.class);
+        assertGeneratedClassContainsBusRegistration(SomeActivityWithSubsriber.class);
+
+        assertGeneratedClassContainsBusInitialisation(SomeEbean.class);
+        assertGeneratedClassDoesNotContainBusRegistration(SomeEbean.class);
     }
 
     @Test
     public void eBeanCompiles() {
-        assertCompilationSuccessful(compileFiles(
+        CompileResult compileResult = compileFiles(
                 SomeEbean.class
-        ));
+        );
+        assertCompilationSuccessful(compileResult);
+        assertGeneratedClassContainsBusInitialisation(SomeEbean.class);
+        assertGeneratedClassDoesNotContainBusRegistration(SomeEbean.class);
     }
 
     /**
@@ -55,10 +79,9 @@ public class EventBusGreenRobotTest extends AAProcessorTestHelper {
      * on a variable of type string (instead of {@link org.greenrobot.eventbus.EventBus})
      */
     @Test
-    public void eBeanCompilationFails() {
-        assertCompilationError(compileFiles(
-                SomeEbeanError.class
-        ));
+    public void eBeanCompilationFails() throws IOException {
+        CompileResult compileResult = compileFiles(SomeEbeanError.class);
+        assertCompilationErrorOn(SomeEbeanError.class, "@EventBusGreenRobot", compileResult);
     }
 
 }

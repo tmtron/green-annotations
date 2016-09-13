@@ -16,13 +16,24 @@
 
 package com.tmtron.greenannotations;
 
-import org.androidannotations.annotations.EBean;
+import android.app.Activity;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-@EBean
-class SomeEbean {
+@EActivity
+public class SomeActivityWithSubsriber extends Activity {
+
+    @Bean
+    public SomeEbean someEbean;
 
     @EventBusGreenRobot
     public EventBus eventBus;
+
+    @Subscribe
+    public void someEventListener(SomeEvent someEvent) {
+
+    }
 
 }
