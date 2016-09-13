@@ -44,6 +44,10 @@
             <artifactId>androidannotations</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations-testutils</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.greenrobot</groupId>
             <artifactId>eventbus</artifactId>
         </dependency>
@@ -70,8 +74,6 @@
                         http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javac.html
                      -->
                     <compilerArgument>-proc:none</compilerArgument>
-                    <source>${compiler.java.source.version}</source>
-                    <target>${compiler.java.target.version}</target>
                 </configuration>
             </plugin>
             <plugin>

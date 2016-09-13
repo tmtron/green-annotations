@@ -15,17 +15,34 @@
   ~ limitations under the License.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.tmtron.greenannotations.test"
           android:versionCode="1"
-          android:versionName="1.0.0-SNAPSHOT" xmlns:tools="http://schemas.android.com/tools">
+          android:versionName="1.0.0-SNAPSHOT">
 
     <uses-sdk
             android:minSdkVersion="17"
             android:targetSdkVersion="17" tools:ignore="OldTargetApi"/>
 
-    <application>
-        <activity android:name=".GreenEventBusActivity_" />
-        <android:allowBackup>false</android:allowBackup>
+    <!--
+        allow Backup and icon are just dummies to get rid of warnings in IntelliJ Idea
+    -->
+    <application
+        android:allowBackup="false"
+        android:icon="@android:drawable/alert_dark_frame"
+        >
+        <activity android:name=".GreenEventBusActivity_">
+            <!-- dummy intent filter to get rid of warnings in IntelliJ Idea -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www.tmtron.com"
+                    android:pathPrefix="/dummy"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
