@@ -52,8 +52,6 @@
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>4.1.1.4</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.greenrobot</groupId>
@@ -70,7 +68,10 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.android.support</groupId>
+            <artifactId>support-annotations</artifactId>
         </dependency>
     </dependencies>
 

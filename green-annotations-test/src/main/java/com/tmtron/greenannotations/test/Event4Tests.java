@@ -16,11 +16,14 @@
 
 package com.tmtron.greenannotations.test;
 
+import android.support.annotation.NonNull;
+
 class Event4Tests {
+    @NonNull
     String identifier;
 
-    // TODO: use android annotations not null
-    Event4Tests(String identifier) {
+    Event4Tests(@NonNull String identifier) {
         this.identifier = identifier;
     }
+
 }

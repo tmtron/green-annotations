@@ -17,7 +17,6 @@
 package com.tmtron.greenannotations;
 
 import org.androidannotations.annotations.EBean;
-import org.greenrobot.eventbus.EventBus;
 
 @EBean
 class SomeEbeanError {
