@@ -30,6 +30,15 @@ public class GreenEventBusActivityTest {
         GreenEventBusActivity activity = Robolectric.setupActivity(GreenEventBusActivity_.class);
 
         assertThat(activity.bus).isNotNull();
+        assertThat(activity.eventIdentifier).isNullOrEmpty();
+    }
+
+    @Test
+    public void testEventFired() {
+        GreenEventBusActivity activity = Robolectric.setupActivity(GreenEventBusActivity_.class);
+
+        activity.bean4EventTest.fireEvent();
+        assertThat(activity.eventIdentifier).isEqualTo(Bean4EventTest.EVENT_IDENTIFIER);
     }
 
 }

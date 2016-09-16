@@ -13,30 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.tmtron.greenannotations.test;
 
-import android.app.Activity;
 import com.tmtron.greenannotations.EventBusGreenRobot;
-import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.EBean;
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
-@EActivity
-public class GreenEventBusActivity extends Activity {
+@EBean
+class Bean4EventTest {
+    static final String EVENT_IDENTIFIER = "bean4EventTest-id";
 
     @EventBusGreenRobot
-    EventBus bus;
+    protected EventBus eventBus;
 
-    @Bean
-    Bean4EventTest bean4EventTest;
-
-    String eventIdentifier;
-
-    @Subscribe
-    public void handleEvent(Event4Tests event4Tests) {
-        eventIdentifier = event4Tests.identifier;
+    void fireEvent() {
+        eventBus.post(new Event4Tests(EVENT_IDENTIFIER));
     }
-
 
 }
