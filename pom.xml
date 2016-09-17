@@ -47,7 +47,7 @@
         <repository>
             <id>android-sdk-maven-repo</id>
             <name>Anroid SDK Maven Repository</name>
-            <url>file://${env.ANDROID_HOME}/extras/android/m2repositoryfile://${env.ANDROID_HOME}/extras/android/m2repository</url>
+            <url>file://${env.ANDROID_HOME}/extras/android/m2repository</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
