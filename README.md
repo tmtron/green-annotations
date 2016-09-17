@@ -7,6 +7,8 @@ The first test is to develop an annotation for the [Greenrobot Eventbus](http://
 
 NOT READY FOR PRODUCTION!
 
+[![Build Status](https://travis-ci.org/tmtron/green-annotations.svg)](https://travis-ci.org/tmtron/green-annotations/builds)
+
 ## Usage in your Android Studio project:
 
 In the `build.gradle` file of the module project:
