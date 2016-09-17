@@ -19,3 +19,5 @@ android:
     - platform-tools
     - android-17
     - build-tools-24.0.2
+    # needed for the support annotations
+    - extra-android-m2repository
