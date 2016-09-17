@@ -21,3 +21,7 @@ android:
     - build-tools-24.0.2
     # needed for the support annotations
     - extra-android-m2repository
+
+before_install:
+  - echo ANDROID_HOME=$ANDROID_HOME
+  - ls -l $ANDROID_HOME/extras/android/m2repository/com/android/support
