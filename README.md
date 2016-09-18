@@ -7,6 +7,9 @@ The first test is to develop an annotation for the [Greenrobot Eventbus](http://
 
 NOT READY FOR PRODUCTION!
 
+<!--
+ ![] is the markdown syntax to add an image and this is surounded by a link to the travis-ci builds page
+-->
 [![Build Status](https://travis-ci.org/tmtron/green-annotations.svg)](https://travis-ci.org/tmtron/green-annotations/builds)
 
 ## Usage in your Android Studio project:
