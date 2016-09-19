@@ -28,10 +28,9 @@ import java.lang.annotation.Target;
  * The annotation will also automatically add code to onStart/onStop to register/unregister the event bus,
  * if you use a org.greenrobot.eventbus.Subscribe annotation on any method of the class.
  * </p>
- * <blockquote>
  * <p>
  * Example :
- * <p>
+ * </p>
  * <pre>
  * import com.tmtron.greenannotations.EventBusGreenRobot;
  * import org.greenrobot.eventbus.EventBus;
@@ -39,13 +38,12 @@ import java.lang.annotation.Target;
  * &#064;EActivity
  * public class MyActivity extends Activity {
  *
- * 	// inject Greenrobot Eventbus
- * 	&#064;EventBusGreenRobot
- * 	EventBus eventBus;
+ *   // inject Greenrobot Eventbus
+ *   &#064;EventBusGreenRobot
+ *   EventBus eventBus;
  *
  * }
  * </pre>
- * </blockquote>
  */
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.FIELD})
