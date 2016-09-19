@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="SpellCheck Files" pattern="(file:*/AndroidManifest.xml||file:*/strings.xml||file:*.java||file:pom.xml||file:*.properties||file:*.md||file:LICENSE||file:NOTICE)&amp;&amp;!file:target//*" />
+</component>

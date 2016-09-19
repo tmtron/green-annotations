@@ -23,7 +23,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 @EActivity
-public class SomeActivityWithSubsriber extends Activity {
+public class SomeActivityWithSubscriber extends Activity {
 
     @Bean
     public SomeEbean someEbean;

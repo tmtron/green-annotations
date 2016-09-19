@@ -52,12 +52,12 @@ public class EventBusGreenRobotTest extends ProcessorTestHelper {
     @Test
     public void activityHasBusRegistration() {
         CompileResult compileResult = compileFiles(
-                SomeActivityWithSubsriber.class,
+                SomeActivityWithSubscriber.class,
                 SomeEbean.class
         );
         assertCompilationSuccessful(compileResult);
-        assertGeneratedClassContainsBusInitialisation(SomeActivityWithSubsriber.class);
-        assertGeneratedClassContainsBusRegistration(SomeActivityWithSubsriber.class);
+        assertGeneratedClassContainsBusInitialisation(SomeActivityWithSubscriber.class);
+        assertGeneratedClassContainsBusRegistration(SomeActivityWithSubscriber.class);
 
         assertGeneratedClassContainsBusInitialisation(SomeEbean.class);
         assertGeneratedClassDoesNotContainBusRegistration(SomeEbean.class);

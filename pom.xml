@@ -46,7 +46,7 @@
     <repositories>
         <repository>
             <id>android-sdk-maven-repo</id>
-            <name>Anroid SDK Maven Repository</name>
+            <name>Android SDK Maven Repository</name>
             <url>file://${env.ANDROID_HOME}/extras/android/m2repository</url>
             <releases>
                 <enabled>true</enabled>

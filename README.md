@@ -2,7 +2,7 @@
 
 An [Android Annotations](http://androidannotations.org/) plugin to support [Green Robot](http://greenrobot.org/).
 
-This is a testproject to learn how to develop a plugin for [Android Annotations](http://androidannotations.org/).  
+This is a test-project to learn how to develop a plugin for [Android Annotations](http://androidannotations.org/).  
 The first test is to develop an annotation for the [Greenrobot Eventbus](http://greenrobot.org/eventbus/)
 
 NOT READY FOR PRODUCTION!

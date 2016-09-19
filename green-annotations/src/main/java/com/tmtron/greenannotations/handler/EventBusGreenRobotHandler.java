@@ -104,7 +104,7 @@ public class EventBusGreenRobotHandler
 
     /**
      * returns true when the element has at least one method that uses
-     * the @Subsribe annotation
+     * the @{@link Subscribe} annotation
      */
     private boolean hasSubscribeAnnotation(Element element) {
         boolean hasSubscribeAnnotation = false;
