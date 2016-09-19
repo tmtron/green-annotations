@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/green-annotations/green-annotations.iml" filepath="$PROJECT_DIR$/green-annotations/green-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/green-annotations-api/green-annotations-api.iml" filepath="$PROJECT_DIR$/green-annotations-api/green-annotations-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/green-annotations-parent.iml" filepath="$PROJECT_DIR$/green-annotations-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/green-annotations-test/green-annotations-test.iml" filepath="$PROJECT_DIR$/green-annotations-test/green-annotations-test.iml" />
+    </modules>
+  </component>
+</project>
