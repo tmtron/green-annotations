@@ -16,7 +16,9 @@
 
 package com.tmtron.greenannotations;
 
-// used in tests only
+/**
+ * only used in method declaration @{@link SomeActivityWithSubscriber#someEventListener(SomeEvent)}
+ */
 @SuppressWarnings("unused")
 class SomeEvent {
 }

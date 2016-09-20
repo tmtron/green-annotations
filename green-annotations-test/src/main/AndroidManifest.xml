@@ -25,24 +25,17 @@
             android:targetSdkVersion="17" tools:ignore="OldTargetApi"/>
 
     <!--
-        allow Backup and icon are just dummies to get rid of warnings in IntelliJ Idea
-    -->
+        tools:ignore="all"
+        does not suppress the “activity is not registered in the manifest” lint-warning
+        http://stackoverflow.com/questions/39590817/androidannotations-how-to-handle-activity-is-not-registered-in-the-manifest
+      -->
     <application
+        android:label="@string/app_name"
         android:allowBackup="false"
         android:icon="@android:drawable/alert_dark_frame"
-        >
-        <activity android:name=".GreenEventBusActivity_">
-            <!-- dummy intent filter to get rid of warnings in IntelliJ Idea -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:host="www.tmtron.com"
-                    android:pathPrefix="/dummy"
-                    android:scheme="http" />
-            </intent-filter>
-        </activity>
+        tools:ignore="all">
+
+        <activity android:name=".GreenEventBusActivity_" />
     </application>
 
 </manifest>

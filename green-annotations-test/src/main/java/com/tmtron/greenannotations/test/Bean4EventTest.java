@@ -24,6 +24,7 @@ import org.greenrobot.eventbus.EventBus;
 class Bean4EventTest {
     static final String EVENT_IDENTIFIER = "bean4EventTest-id";
 
+    @SuppressWarnings("all")
     @EventBusGreenRobot
     protected EventBus eventBus;
 

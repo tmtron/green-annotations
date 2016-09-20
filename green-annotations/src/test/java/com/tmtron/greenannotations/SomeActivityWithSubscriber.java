@@ -36,8 +36,8 @@ public class SomeActivityWithSubscriber extends Activity {
     public EventBus eventBus;
 
     @Subscribe
+    @SuppressWarnings("EmptyMethod")
     public void someEventListener(SomeEvent someEvent) {
-
     }
 
 }

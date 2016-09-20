@@ -20,9 +20,9 @@ import android.support.annotation.NonNull;
 
 class Event4Tests {
     @NonNull
-    String identifier;
+    final String identifier;
 
-    Event4Tests(@NonNull String identifier) {
+    Event4Tests(@SuppressWarnings("SameParameterValue") @NonNull String identifier) {
         this.identifier = identifier;
     }
 

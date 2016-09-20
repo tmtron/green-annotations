@@ -15,6 +15,7 @@
  */
 package com.tmtron.greenannotations.test;
 
+import com.tmtron.greenannotations.GreenAnnotationsPlugin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -29,6 +30,17 @@ public class GreenEventBusActivityTest {
     public void testEventBusAssigned() {
         GreenEventBusActivity activity = Robolectric.setupActivity(GreenEventBusActivity_.class);
 
+        /* Note: this test is just used to get rid of a wrong IDEA Code Analysis warning
+         * in the green-annotations-test:
+         *  Module 'green-annotations-test' sources do not depend on module 'green-annotations' sources
+         *
+         * This call will insert an explicit dependency on the green-annotations project
+         * and the warning is gone
+         *
+         * see also: http://stackoverflow.com/questions/39589379/idea-how-to-handle-module-a-sources-do-not-depend-on-module-b-sources-war
+         */
+        assertThat(GreenAnnotationsPlugin.class.getName()).isNotEmpty();
+
         assertThat(activity.bus).isNotNull();
         assertThat(activity.eventIdentifier).isNullOrEmpty();
     }
@@ -37,6 +49,7 @@ public class GreenEventBusActivityTest {
     public void testEventFired() {
         GreenEventBusActivity activity = Robolectric.setupActivity(GreenEventBusActivity_.class);
 
+        assertThat(activity.bean4EventTest).isNotNull();
         activity.bean4EventTest.fireEvent();
         assertThat(activity.eventIdentifier).isEqualTo(Bean4EventTest.EVENT_IDENTIFIER);
     }
