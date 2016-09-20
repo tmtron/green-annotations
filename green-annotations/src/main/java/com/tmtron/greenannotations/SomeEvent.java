@@ -16,5 +16,7 @@
 
 package com.tmtron.greenannotations;
 
+// used in tests only
+@SuppressWarnings("unused")
 class SomeEvent {
 }

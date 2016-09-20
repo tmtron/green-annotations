@@ -25,9 +25,13 @@ import org.greenrobot.eventbus.EventBus;
 public class SomeActivity extends Activity {
 
     @Bean
+    // it is used only in the tests
+    @SuppressWarnings("unused")
     public SomeEbean someEbean;
 
     @EventBusGreenRobot
+    // used for testing only
+    @SuppressWarnings("unused")
     public EventBus eventBus;
 
 }

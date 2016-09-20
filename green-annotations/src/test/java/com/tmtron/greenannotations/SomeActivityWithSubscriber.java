@@ -26,9 +26,13 @@ import org.greenrobot.eventbus.Subscribe;
 public class SomeActivityWithSubscriber extends Activity {
 
     @Bean
+    // it is used only in the tests
+    @SuppressWarnings("unused")
     public SomeEbean someEbean;
 
     @EventBusGreenRobot
+    // used for testing only
+    @SuppressWarnings("unused")
     public EventBus eventBus;
 
     @Subscribe

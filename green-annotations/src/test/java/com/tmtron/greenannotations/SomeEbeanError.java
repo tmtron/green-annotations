@@ -18,10 +18,18 @@ package com.tmtron.greenannotations;
 
 import org.androidannotations.annotations.EBean;
 
+
+/**
+ * the compilation of {@link SomeEbeanError} is expected to fail,
+ * because the {@link EventBusGreenRobot} annotation is used
+ * on a variable of type string (instead of {@link org.greenrobot.eventbus.EventBus})
+ */
 @EBean
 class SomeEbeanError {
 
     @EventBusGreenRobot
+    // used for testing only and should fail anyway
+    @SuppressWarnings("unused")
     public String eventBus;
 
 }

@@ -22,6 +22,8 @@ import org.greenrobot.eventbus.EventBus;
 @EBean
 class SomeEbean {
 
+    // used for testing only
+    @SuppressWarnings("unused")
     @EventBusGreenRobot
     public EventBus eventBus;
 
