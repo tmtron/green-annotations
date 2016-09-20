@@ -23,6 +23,14 @@ import org.androidannotations.plugin.AndroidAnnotationsPlugin;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class will register all annotation handlers.
+ * <p>
+ * This class is referred to by the
+ *  {@code org.androidannotations.plugin.AndroidAnnotationsPlugin} file
+ * in {@code src/main/resources/META-INF/services/}
+ * </p>
+ */
 public class GreenAnnotationsPlugin extends AndroidAnnotationsPlugin {
 
     /**

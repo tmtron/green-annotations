@@ -27,12 +27,20 @@
     </parent>
 
     <artifactId>green-annotations</artifactId>
-    <description>AndroidAnnotations plugin for GreenRobot</description>
-    <name>AndroidAnnotations plugin for GreenRobot</name>
+    <name>GreenAnnotations Plugin</name>
+    <description>The GreenAnnotations Plugin to add GreenRobot support to AndroidAnnotations</description>
+    <!-- must explicitly be set so that the site-plugin will use the correct -->
+    <url>${github.url}</url>
 
     <properties>
         <main.basedir>${project.parent.basedir}</main.basedir>
     </properties>
+
+    <scm>
+        <connection>${github.connection}</connection>
+        <developerConnection>${github.developerConnection}</developerConnection>
+        <url>https://github.com/tmtron/${github.project.name}/tree/develop/${project.artifactId}</url>
+    </scm>
 
     <dependencies>
         <dependency>

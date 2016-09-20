@@ -21,17 +21,25 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * Use it on fields of any Android-Annotations enhanced class to inject the Greenrobot default Eventbus.
- * </p>
- * <p>
- * The annotation will also automatically add code to onStart/onStop to register/unregister the event bus,
- * if you use a org.greenrobot.eventbus.Subscribe annotation on any method of the class.
- * </p>
+ * Use this annotation on fields of any Android-Annotations enhanced class to inject the Greenrobot default Eventbus.
+ *
+ * <ul>
+ * <li>the event-bus field (annotated with this annotation) will be initialize
+ * in the {@code _init} method with the default event bus: {@code EventBus.getDefault()}</li>
+ * <li>in addition, when the parent class has
+ * <ul>
+ *   <li>life-cylce methods (e.g. {@code org.androidannotations.annotations.EActivity},
+ *   {@code org.androidannotations.annotations.EService}, etc.)</li>
+ *    <li>AND at least one {@code Subscribe} annotation</li>
+ * </ul>
+ * we will also add {@code EventBus.register}/{@code EventBus.unregister} calls in the
+ * {@code onStart}/{@code onStop} methods
+ * </li>
+ * </ul>
  * <p>
  * Example :
  * </p>
- * <pre>
+ * <pre><code>
  * import com.tmtron.greenannotations.EventBusGreenRobot;
  * import org.greenrobot.eventbus.EventBus;
  *
@@ -43,7 +51,9 @@ import java.lang.annotation.Target;
  *   EventBus eventBus;
  *
  * }
- * </pre>
+ * </code></pre>
+ *
+ * @see <a href="https://github.com/tmtron/green-annotations">green-annotations project on GitHub</a>
  */
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.FIELD})

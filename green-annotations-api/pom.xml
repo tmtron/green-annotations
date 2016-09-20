@@ -27,8 +27,15 @@
     </parent>
 
     <artifactId>green-annotations-api</artifactId>
-    <description>The API jar contains the AndroidAnnotations for GreenRobot</description>
-    <name>AndroidAnnotations GreenRobot plugin API</name>
+    <name>GreenAnnotations API (Annotations)</name>
+    <description>GreenAnnotations API (Annotations) to add GreenRobot support to AndroidAnnotations</description>
+    <url>${github.url}</url>
+
+    <scm>
+        <connection>${github.connection}</connection>
+        <developerConnection>${github.developerConnection}</developerConnection>
+        <url>https://github.com/tmtron/${github.project.name}/tree/develop/${project.artifactId}</url>
+    </scm>
 
     <properties>
         <main.basedir>${project.parent.basedir}</main.basedir>

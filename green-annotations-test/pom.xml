@@ -27,7 +27,15 @@
 
     <artifactId>green-annotations-test</artifactId>
     <packaging>apk</packaging>
-    <name>GreenAnnotations plugin functional test suite</name>
+    <name>GreenAnnotations Functional Tests</name>
+    <description>Functional test suite for the green-annotations project</description>
+    <url>${github.url}</url>
+
+    <scm>
+        <connection>${github.connection}</connection>
+        <developerConnection>${github.developerConnection}</developerConnection>
+        <url>https://github.com/tmtron/${github.project.name}/tree/develop/${project.artifactId}</url>
+    </scm>
 
     <properties>
         <main.basedir>${project.parent.basedir}</main.basedir>
