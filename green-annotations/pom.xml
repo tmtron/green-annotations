@@ -79,28 +79,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>travis</id>
-            <activation>
-                <property>
-                    <!--
-                        see: https://docs.travis-ci.com/user/environment-variables/
-                    -->
-                    <name>TRAVIS</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <configuration><skip>true</skip></configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
 </project>
