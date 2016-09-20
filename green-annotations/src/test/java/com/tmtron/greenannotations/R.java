@@ -24,6 +24,8 @@ package com.tmtron.greenannotations;
  * java.lang.AssertionError: Expected no errors, found error: The generated com.tmtron.greenannotations.R class cannot be found
  * </pre>
  */
+// the class is required for the build process
+@SuppressWarnings("unused")
 public class R {
 
 }
