@@ -430,7 +430,7 @@
                     <!--
                         see: https://docs.travis-ci.com/user/environment-variables/
                     -->
-                    <name>TRAVIS</name>
+                    <name>env.TRAVIS</name>
                     <value>true</value>
                 </property>
             </activation>

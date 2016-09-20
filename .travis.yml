@@ -24,9 +24,10 @@ android:
 
 before_install:
   - echo ANDROID_HOME=$ANDROID_HOME
-  - echo TRAVIS=TRAVIS
+  - echo TRAVIS=$TRAVIS
   - ls -l $ANDROID_HOME/extras/android/m2repository/com/android/support
 
 script:
+  - mvn help:all-profiles
   - mvn help:effective-pom
   - mvn install -B
