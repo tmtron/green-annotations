@@ -15,7 +15,6 @@
  */
 package com.tmtron.greenannotations.test;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import com.tmtron.greenannotations.EventBusGreenRobot;
 import org.androidannotations.annotations.Bean;
@@ -23,10 +22,6 @@ import org.androidannotations.annotations.EActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-/* this has no effect: see
- * http://stackoverflow.com/questions/39590817/androidannotations-how-to-handle-activity-is-not-registered-in-the-manifest
- */
-@SuppressLint("Registered")
 @SuppressWarnings("CanBeFinal")
 @EActivity
 public class GreenEventBusActivity extends Activity {

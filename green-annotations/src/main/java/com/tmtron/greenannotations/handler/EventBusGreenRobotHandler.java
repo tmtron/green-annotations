@@ -40,7 +40,7 @@ import java.util.List;
  * initialize it in the {@code _init} method and assign the default event bus: {@link EventBus#getDefault()}</li>
  * <li>in addition, when the parent class has
  *   <ul>
- *   <li>life-cylce methods (e.g. {@link org.androidannotations.annotations.EActivity},
+ *   <li>life-cycle methods (e.g. {@link org.androidannotations.annotations.EActivity},
  *   {@link org.androidannotations.annotations.EService}, etc.)</li>
  *    <li>AND at least one {@link Subscribe} annotation</li>
  * </ul>

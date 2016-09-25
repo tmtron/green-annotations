@@ -89,6 +89,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/green-annotations-test/lint.xml" />
     <file url="file://$PROJECT_DIR$/green-annotations/src/test/resources/com/tmtron/greenannotations/AndroidManifest.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">

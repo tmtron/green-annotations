@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
  * in the {@code _init} method with the default event bus: {@code EventBus.getDefault()}</li>
  * <li>in addition, when the parent class has
  * <ul>
- *   <li>life-cylce methods (e.g. {@code org.androidannotations.annotations.EActivity},
+ *   <li>life-cycle methods (e.g. {@code org.androidannotations.annotations.EActivity},
  *   {@code org.androidannotations.annotations.EService}, etc.)</li>
  *    <li>AND at least one {@code Subscribe} annotation</li>
  * </ul>
