@@ -31,6 +31,7 @@
         tools:ignore="all">
 
         <activity android:name=".GreenEventBusActivity_" />
+        <activity android:name=".ActivityAfter_" />
     </application>
 
 </manifest>
