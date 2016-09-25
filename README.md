@@ -11,17 +11,20 @@ An [Android Annotations](http://androidannotations.org/) plugin to support the [
 
 In the `build.gradle` file of the module project:
 
+```gradle
     dependencies {
         // Android Annotations for Greenrobot
         apt 'com.tmtron:green-annotations:1.0.0'
         compile 'com.tmtron:green-annotations-api:1.0.0'
     }
+```
 
 ## Details
 
 ### Before
 Shows the Activity without using AndroidAnnotations or GreenAnnotations: 
 
+```java
     public class ActivityBefore extends Activity {
     
         EventBus eventBus;
@@ -54,10 +57,12 @@ Shows the Activity without using AndroidAnnotations or GreenAnnotations:
         }
     
     }
+```
 
 ### After
 Shows the same Activity with AndroidAnnotations and GreenAnnotations:
 
+```java
     @EActivity
     public class ActivityAfter extends Activity {
     
@@ -74,7 +79,7 @@ Shows the same Activity with AndroidAnnotations and GreenAnnotations:
         }
     
     }
-
+```
 
 
 ## License
