@@ -18,8 +18,9 @@ package com.tmtron.greenannotations;
 
 /**
  * This dummy R class is needed for the JUnit tests.
- * <p></p>
+ * <p>
  * If it does not exist, the tests will fail with this error:
+ * </p>
  * <pre>
  * java.lang.AssertionError: Expected no errors, found error: The generated com.tmtron.greenannotations.R class cannot be found
  * </pre>

@@ -77,6 +77,8 @@ public class EventBusGreenRobotTest extends ProcessorTestHelper {
      * the compilation of {@link SomeEbeanError} is expected to fail,
      * because this {@link EventBusGreenRobot} annotation is used
      * on a variable of type string (instead of {@link org.greenrobot.eventbus.EventBus})
+     *
+     * @throws IOException when the java file for the test is not accessible
      */
     @Test
     public void eBeanCompilationFails() throws IOException {
