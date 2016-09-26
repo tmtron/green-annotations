@@ -1,13 +1,11 @@
 # Green Annotations
 
-[![Join the chat at https://gitter.im/green-annotations/Lobby](https://badges.gitter.im/green-annotations/Lobby.svg)](https://gitter.im/green-annotations/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 An [Android Annotations](http://androidannotations.org/) plugin to support the [Greenrobot Eventbus](http://greenrobot.org/eventbus/)
 
 <!--
  ![] is the markdown syntax to add an image and this is surounded by a link to the travis-ci builds page
 -->
-[![Build Status](https://travis-ci.org/tmtron/green-annotations.svg?label=travis)](https://travis-ci.org/tmtron/green-annotations/builds) [![Maven Central](https://img.shields.io/maven-central/v/com.tmtron/green-annotations.svg?maxAge=2592000)](https://maven-badges.herokuapp.com/maven-central/com.tmtron/green-annotations) [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.tmtron/green-annotations/badge.svg)](http://www.javadoc.io/doc/com.tmtron/green-annotations/) [![license](https://img.shields.io/github/license/tmtron/green-annotations.svg?maxAge=2592000)](https://raw.githubusercontent.com/tmtron/green-annotations/develop/LICENSE)
+[![Build Status](https://travis-ci.org/tmtron/green-annotations.svg?label=travis)](https://travis-ci.org/tmtron/green-annotations/builds) [![Maven Central](https://img.shields.io/maven-central/v/com.tmtron/green-annotations.svg?maxAge=2592000)](https://maven-badges.herokuapp.com/maven-central/com.tmtron/green-annotations) [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.tmtron/green-annotations/badge.svg)](http://www.javadoc.io/doc/com.tmtron/green-annotations/) [![license](https://img.shields.io/github/license/tmtron/green-annotations.svg?maxAge=2592000)](https://raw.githubusercontent.com/tmtron/green-annotations/develop/LICENSE) [![Join the chat at https://gitter.im/green-annotations/Lobby](https://badges.gitter.im/green-annotations/Lobby.svg)](https://gitter.im/green-annotations/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Usage in your Android Studio project:
 
