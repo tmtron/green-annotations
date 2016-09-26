@@ -5,7 +5,7 @@ An [Android Annotations](http://androidannotations.org/) plugin to support the [
 <!--
  ![] is the markdown syntax to add an image and this is surounded by a link to the travis-ci builds page
 -->
-[![Build Status](https://travis-ci.org/tmtron/green-annotations.svg)](https://travis-ci.org/tmtron/green-annotations/builds)
+[![Build Status](https://travis-ci.org/tmtron/green-annotations.svg?label=travis)](https://travis-ci.org/tmtron/green-annotations/builds) [![Maven Central](https://img.shields.io/maven-central/v/com.tmtron/green-annotations.svg?maxAge=2592000)](https://maven-badges.herokuapp.com/maven-central/com.tmtron/green-annotations) [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.tmtron/green-annotations/badge.svg)](http://www.javadoc.io/doc/com.tmtron/green-annotations/) [![license](https://img.shields.io/github/license/tmtron/green-annotations.svg?maxAge=2592000)](https://raw.githubusercontent.com/tmtron/green-annotations/develop/LICENSE)
 
 ## Usage in your Android Studio project:
 
