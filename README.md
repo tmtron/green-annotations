@@ -1,5 +1,7 @@
 # Green Annotations
 
+[![Join the chat at https://gitter.im/green-annotations/Lobby](https://badges.gitter.im/green-annotations/Lobby.svg)](https://gitter.im/green-annotations/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 An [Android Annotations](http://androidannotations.org/) plugin to support the [Greenrobot Eventbus](http://greenrobot.org/eventbus/)
 
 <!--
