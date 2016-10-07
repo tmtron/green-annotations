@@ -39,12 +39,10 @@ class ProcessorTestHelper extends AAProcessorTestHelper {
     }
 
     private final String[] codeBusRegister = new String[]{
-            "        super.onStart();",
             "        this.eventBus.register(this);"};
 
     private final String[] codeBusUnregister = new String[]{
-            "        this.eventBus.unregister(this);",
-            "        super.onStop();"};
+            "        this.eventBus.unregister(this);"};
 
     void assertGeneratedClassDoesNotContainBusRegistration(Class sourceClass) {
         assertGeneratedClassDoesNotContain(sourceClass, codeBusRegister);

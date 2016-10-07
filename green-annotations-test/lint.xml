@@ -23,5 +23,8 @@
             http://stackoverflow.com/questions/39685618/intellij-idea-element-ignore-is-not-allowed-here
         -->
         <ignore regexp=".*GreenEventBusActivity.*" />
+        <ignore regexp=".*ActivityAfter.*" />
+        <ignore regexp=".*ActivityBefore.*" />
+        <ignore regexp=".*Service4EventTest.*" />
     </issue>
 </lint>

@@ -21,6 +21,7 @@
 
     <application>
         <activity android:name="com.tmtron.greenannotations.SomeActivity_"/>
+        <service android:name=".SomeEService_" />
     </application>
 
 </manifest>

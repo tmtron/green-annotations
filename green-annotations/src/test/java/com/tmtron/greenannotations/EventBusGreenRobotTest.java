@@ -22,6 +22,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+@SuppressWarnings({"WeakerAccess"})
 public class EventBusGreenRobotTest extends ProcessorTestHelper {
 
     @Before
@@ -84,6 +85,19 @@ public class EventBusGreenRobotTest extends ProcessorTestHelper {
     public void eBeanCompilationFails() throws IOException {
         CompileResult compileResult = compileFiles(SomeEbeanError.class);
         assertCompilationErrorOn(SomeEbeanError.class, "@EventBusGreenRobot", compileResult);
+    }
+
+    /**
+     * testcase for <a href="https://github.com/tmtron/green-annotations/issues/12">issue 12</a>
+     */
+    @Test
+    public void eServiceCompiles() {
+        CompileResult compileResult = compileFiles(
+                SomeEService.class
+        );
+        assertCompilationSuccessful(compileResult);
+        assertGeneratedClassContainsBusInitialisation(SomeEService.class);
+        assertGeneratedClassContainsBusRegistration(SomeEService.class);
     }
 
 }

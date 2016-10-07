@@ -16,34 +16,44 @@
 
 package com.tmtron.greenannotations.test;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.widget.Toast;
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
 import com.tmtron.greenannotations.EventBusGreenRobot;
-import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.EService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-/**
- * test class to show how to use EventBus with GreenAnnotations
- */
-@SuppressLint("Registered")
 @SuppressWarnings({"WeakerAccess"})
-@EActivity
-public class ActivityAfter extends Activity {
+@EService
+public class Service4EventTest extends Service {
+    static final String EVENT_IDENTIFIER = "service4EventTest-id";
 
-    @SuppressWarnings("CanBeFinal")
+    @SuppressWarnings("all")
     @EventBusGreenRobot
     EventBus eventBus;
 
-    void fireEvent(@SuppressWarnings("SameParameterValue") String message) {
-        eventBus.post(new MessageEvent(message));
+    void fireEvent() {
+        eventBus.post(new Event4Tests(EVENT_IDENTIFIER));
     }
+
+    int startId = 0;
+    String eventIdentifier;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(MessageEvent event) {
-        Toast.makeText(getApplicationContext(), event.message, Toast.LENGTH_SHORT).show();
+    public void onEvent(Event4Tests event4Tests) {
+        eventIdentifier = event4Tests.identifier;
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        this.startId = startId;
+        return START_STICKY_COMPATIBILITY;
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
 }
