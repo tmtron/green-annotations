@@ -23,6 +23,7 @@ import org.androidannotations.handler.BaseAnnotationHandler;
 import org.androidannotations.handler.MethodInjectionHandler;
 import org.androidannotations.helper.InjectHelper;
 import org.androidannotations.holder.EComponentHolder;
+import org.androidannotations.holder.EServiceHolder;
 import org.androidannotations.holder.HasLifecycleMethods;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -166,8 +167,15 @@ public class EventBusGreenRobotHandler
     private void handleEventBusRegistration(IJAssignmentTarget fieldRef
             , HasLifecycleMethods holderWithLifecycleMethods) {
 
-        JBlock onStartBlock = holderWithLifecycleMethods.getOnStartAfterSuperBlock();
-        JBlock onStopBlock = holderWithLifecycleMethods.getOnStopBeforeSuperBlock();
+        JBlock onStartBlock;
+        JBlock onStopBlock;
+        if (holderWithLifecycleMethods instanceof EServiceHolder) {
+            onStartBlock = holderWithLifecycleMethods.getOnCreateAfterSuperBlock();
+            onStopBlock = holderWithLifecycleMethods.getOnDestroyBeforeSuperBlock();
+        } else {
+            onStartBlock = holderWithLifecycleMethods.getOnStartAfterSuperBlock();
+            onStopBlock = holderWithLifecycleMethods.getOnStopBeforeSuperBlock();
+        }
         onStartBlock.invoke(fieldRef, "register").arg(JExpr._this());
         onStopBlock.invoke(fieldRef, "unregister").arg(JExpr._this());
     }

@@ -26,6 +26,7 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * test class to show how to use EventBus without GreenAnnotations
  */
+@SuppressWarnings({"WeakerAccess"})
 public class ActivityBefore extends Activity {
 
     EventBus eventBus;
@@ -48,7 +49,7 @@ public class ActivityBefore extends Activity {
         super.onStop();
     }
 
-    void fireEvent(String message) {
+    void fireEvent(@SuppressWarnings("SameParameterValue") String message) {
         eventBus.post(new MessageEvent(message));
     }
 

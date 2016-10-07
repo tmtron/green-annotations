@@ -20,11 +20,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.util.ServiceController;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 public class GreenEventBusActivityTest {
+
+    private static final int START_ID = 17;
 
     @Test
     public void testEventBusAssigned() {
@@ -53,5 +56,24 @@ public class GreenEventBusActivityTest {
         activity.bean4EventTest.fireEvent();
         assertThat(activity.eventIdentifier).isEqualTo(Bean4EventTest.EVENT_IDENTIFIER);
     }
+
+    @Test
+    public void testServiceEventFired() {
+        ServiceController<Service4EventTest_> serviceController = Robolectric.buildService(Service4EventTest_.class).attach().create();
+        Service4EventTest service = serviceController.get();
+
+        assertThat(service.eventBus).isNotNull();
+
+        assertThat(service.startId).isEqualTo(0);
+        serviceController.startCommand(0, START_ID);
+        assertThat(service.startId).isEqualTo(START_ID);
+
+        assertThat(service.eventIdentifier).isNullOrEmpty();
+        service.fireEvent();
+        assertThat(service.eventIdentifier).isEqualTo(Service4EventTest.EVENT_IDENTIFIER);
+
+        serviceController.destroy();
+    }
+
 
 }
