@@ -37,16 +37,21 @@ import java.util.List;
 /**
  * Handler for the {@link EventBusGreenRobot} annotation.
  * <ul>
- * <li>when there is an item annotated with {@link EventBusGreenRobot}, we will
- * initialize it in the {@code _init} method and assign the default event bus: {@link EventBus#getDefault()}</li>
- * <li>in addition, when the parent class has
+ * <li>When the class contains an instance of {@link EventBus} which is annotated with {@link EventBusGreenRobot}, we
+ * it will automatically be initialized with the default event bus: {@link EventBus#getDefault()}</li>
+ * <li>In addition, when the parent class has
  *   <ul>
  *   <li>life-cycle methods (e.g. {@link org.androidannotations.annotations.EActivity},
  *   {@link org.androidannotations.annotations.EService}, etc.)</li>
  *    <li>AND at least one {@link Subscribe} annotation</li>
  * </ul>
- * we will also add {@link EventBus#register(Object)}/{@link EventBus#unregister(Object)} calls in the
- * {@code onStart}/{@code onStop} methods
+ * We will also add {@link EventBus#register(Object)}/{@link EventBus#unregister(Object)} calls:
+ * <ul>
+ *     <li>{@link org.androidannotations.annotations.EService @EService}: {@code onCreate}/{@code onDestroy}</li>
+ *     <li>for others (e.g. {@link org.androidannotations.annotations.EActivity @EActivity},
+ *     {@link org.androidannotations.annotations.EBean @EBean}): {@code onStart}/{@code onStop}
+ *     </li>
+ * </ul>
  * </li>
  * </ul>
  */

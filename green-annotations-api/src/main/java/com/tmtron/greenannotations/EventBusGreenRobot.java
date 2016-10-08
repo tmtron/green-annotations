@@ -25,15 +25,20 @@ import java.lang.annotation.Target;
  *
  * <ul>
  * <li>the event-bus field (annotated with this annotation) will be initialize
- * in the {@code _init} method with the default event bus: {@code EventBus.getDefault()}</li>
+ * in with the default event bus: {@code EventBus.getDefault()}</li>
  * <li>in addition, when the parent class has
  * <ul>
  *   <li>life-cycle methods (e.g. {@code org.androidannotations.annotations.EActivity},
  *   {@code org.androidannotations.annotations.EService}, etc.)</li>
  *    <li>AND at least one {@code Subscribe} annotation</li>
  * </ul>
- * we will also add {@code EventBus.register}/{@code EventBus.unregister} calls in the
- * {@code onStart}/{@code onStop} methods
+ * We will also add {@code register}/{@code unregister} calls:
+ * <ul>
+ *     <li>{@code @EService}: {@code onCreate}/{@code onDestroy}</li>
+ *     <li>for others (e.g. {@code @EActivity},
+ *     {@code @EBean}): {@code onStart}/{@code onStop}
+ *     </li>
+ * </ul>
  * </li>
  * </ul>
  * <p>
