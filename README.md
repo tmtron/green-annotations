@@ -1,6 +1,7 @@
 # Green Annotations
 
-An [Android Annotations](http://androidannotations.org/) plugin to support the [Greenrobot Eventbus](http://greenrobot.org/eventbus/)
+An [Android Annotations](http://androidannotations.org/) plugin to support the [Greenrobot Eventbus](http://greenrobot.org/eventbus/).  
+It can inject the [default EventBus](http://greenrobot.org/files/eventbus/javadoc/3.0/org/greenrobot/eventbus/EventBus.html#getDefault--) and automatically handle the registration/unregistration.
 
 <!--
  ![] is the markdown syntax to add an image and this is surounded by a link to the travis-ci builds page
