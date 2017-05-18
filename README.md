@@ -82,6 +82,7 @@ Shows the same Activity with AndroidAnnotations and GreenAnnotations:
     }
 ```
 
+Note: [green-annotations-test](https://github.com/tmtron/green-annotations-test) is a tiny test-project: a sample android app with only one single activity to show how to use green-annotations (and the gradle-setup).
 
 ## License
 This plugin is under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0.html). Copyright 2016, Martin Trummer
