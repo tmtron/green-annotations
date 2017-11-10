@@ -15,24 +15,30 @@
  */
 package com.tmtron.greenannotations.handler;
 
-import com.helger.jcodemodel.*;
+import com.helger.jcodemodel.AbstractJClass;
+import com.helger.jcodemodel.IJAssignmentTarget;
+import com.helger.jcodemodel.IJExpression;
+import com.helger.jcodemodel.IJStatement;
+import com.helger.jcodemodel.JBlock;
+import com.helger.jcodemodel.JExpr;
 import com.tmtron.greenannotations.EventBusGreenRobot;
+
 import org.androidannotations.AndroidAnnotationsEnvironment;
 import org.androidannotations.ElementValidation;
 import org.androidannotations.handler.BaseAnnotationHandler;
 import org.androidannotations.handler.MethodInjectionHandler;
 import org.androidannotations.helper.InjectHelper;
 import org.androidannotations.holder.EComponentHolder;
-import org.androidannotations.holder.EServiceHolder;
-import org.androidannotations.holder.HasLifecycleMethods;
+import org.androidannotations.holder.HasSimpleLifecycleMethods;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.type.TypeMirror;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Handler for the {@link EventBusGreenRobot} annotation.
@@ -40,17 +46,17 @@ import java.util.List;
  * <li>When the class contains an instance of {@link EventBus} which is annotated with {@link EventBusGreenRobot}, we
  * it will automatically be initialized with the default event bus: {@link EventBus#getDefault()}</li>
  * <li>In addition, when the parent class has
- *   <ul>
- *   <li>life-cycle methods (e.g. {@link org.androidannotations.annotations.EActivity},
- *   {@link org.androidannotations.annotations.EService}, etc.)</li>
- *    <li>AND at least one {@link Subscribe} annotation</li>
+ * <ul>
+ * <li>life-cycle methods (e.g. {@link org.androidannotations.annotations.EActivity},
+ * {@link org.androidannotations.annotations.EService}, etc.)</li>
+ * <li>AND at least one {@link Subscribe} annotation</li>
  * </ul>
  * We will also add {@link EventBus#register(Object)}/{@link EventBus#unregister(Object)} calls:
  * <ul>
- *     <li>{@link org.androidannotations.annotations.EService @EService}: {@code onCreate}/{@code onDestroy}</li>
- *     <li>for others (e.g. {@link org.androidannotations.annotations.EActivity @EActivity},
- *     {@link org.androidannotations.annotations.EBean @EBean}): {@code onStart}/{@code onStop}
- *     </li>
+ * <li>{@link org.androidannotations.annotations.EService @EService}: {@code onCreate}/{@code onDestroy}</li>
+ * <li>for others (e.g. {@link org.androidannotations.annotations.EActivity @EActivity},
+ * {@link org.androidannotations.annotations.EBean @EBean}): {@code onStart}/{@code onStop}
+ * </li>
  * </ul>
  * </li>
  * </ul>
@@ -96,7 +102,8 @@ public class EventBusGreenRobotHandler
     }
 
     @Override
-    public void assignValue(JBlock targetBlock, IJAssignmentTarget fieldRef, EComponentHolder holder, Element element, Element param) {
+    public void assignValue(JBlock targetBlock, IJAssignmentTarget fieldRef, EComponentHolder holder, Element
+            element, Element param) {
         // the InjectHelper will call this function
         // * targetBlock is a block in the init-method (which is returned by @getInvocationBlock)
         // * fieldRef is the field reference (this.bus) that is annotated with this EventBusGreenRobot annotation
@@ -104,10 +111,10 @@ public class EventBusGreenRobotHandler
 
         initEventBusMember(targetBlock, fieldRef, param);
 
-        if (holder instanceof HasLifecycleMethods) {
+        if (holder instanceof HasSimpleLifecycleMethods) {
             if (hasSubscribeAnnotation(element)) {
                 // we need to register/unregister the event-bus
-                handleEventBusRegistration(fieldRef, (HasLifecycleMethods) holder);
+                handleEventBusRegistration(fieldRef, (HasSimpleLifecycleMethods) holder);
             }
         }
     }
@@ -119,10 +126,10 @@ public class EventBusGreenRobotHandler
      * and is of type {@link org.greenrobot.eventbus.EventBus} with the
      * default event-bus: {@link EventBus#getDefault()}
      * </p>
-
-     * @param targetBlock  the code block where the initialization code is added to
-     * @param fieldRef  the reference to the event-bus member variable.
-     * @param param  the annotated element
+     *
+     * @param targetBlock the code block where the initialization code is added to
+     * @param fieldRef    the reference to the event-bus member variable.
+     * @param param       the annotated element
      */
     private void initEventBusMember(JBlock targetBlock, IJAssignmentTarget fieldRef, Element param) {
         TypeMirror fieldType = param.asType();
@@ -144,7 +151,7 @@ public class EventBusGreenRobotHandler
      * then we must register/unregister the class with the EventBus
      * </p>
      *
-     * @param element  the element to check for the @{@link Subscribe} annotation
+     * @param element the element to check for the @{@link Subscribe} annotation
      * @return if we must register/unregister the EventBus
      */
     private boolean hasSubscribeAnnotation(Element element) {
@@ -166,21 +173,25 @@ public class EventBusGreenRobotHandler
     /**
      * adds register/unregister calls for the EventBus to the onStart/onStop methods
      *
-     * @param fieldRef  is the field reference ({@code this.bus}) that is annotated the {@link EventBusGreenRobot} annotation
-     * @param holderWithLifecycleMethods  the component holder which implements {@link HasLifecycleMethods}
+     * @param fieldRef                   is the field reference ({@code this.bus}) that is annotated the
+     *                                   {@link EventBusGreenRobot} annotation
+     * @param holderWithLifecycleMethods the component holder which implements {@link HasSimpleLifecycleMethods}
      */
     private void handleEventBusRegistration(IJAssignmentTarget fieldRef
-            , HasLifecycleMethods holderWithLifecycleMethods) {
+            , HasSimpleLifecycleMethods holderWithLifecycleMethods) {
 
         JBlock onStartBlock;
         JBlock onStopBlock;
-        if (holderWithLifecycleMethods instanceof EServiceHolder) {
-            onStartBlock = holderWithLifecycleMethods.getOnCreateAfterSuperBlock();
-            onStopBlock = holderWithLifecycleMethods.getOnDestroyBeforeSuperBlock();
-        } else {
-            onStartBlock = holderWithLifecycleMethods.getOnStartAfterSuperBlock();
-            onStopBlock = holderWithLifecycleMethods.getOnStopBeforeSuperBlock();
-        }
+        onStartBlock = holderWithLifecycleMethods.getStartLifecycleAfterSuperBlock();
+        onStopBlock = holderWithLifecycleMethods.getEndLifecycleBeforeSuperBlock();
+
+//        if (holderWithLifecycleMethods instanceof EServiceHolder) {
+//            onStartBlock = holderWithLifecycleMethods.getOnCreateAfterSuperBlock();
+//            onStopBlock = holderWithLifecycleMethods.getOnDestroyBeforeSuperBlock();
+//        } else {
+//            onStartBlock = holderWithLifecycleMethods.getOnStartAfterSuperBlock();
+//            onStopBlock = holderWithLifecycleMethods.getOnStopBeforeSuperBlock();
+//        }
         onStartBlock.invoke(fieldRef, "register").arg(JExpr._this());
         onStopBlock.invoke(fieldRef, "unregister").arg(JExpr._this());
     }

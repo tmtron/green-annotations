@@ -15,10 +15,12 @@ In the `build.gradle` file of the module project:
 ```gradle
     dependencies {
         // Android Annotations for Greenrobot
-        apt 'com.tmtron:green-annotations:1.0.1'
-        compile 'com.tmtron:green-annotations-api:1.0.1'
+        apt 'com.tmtron:green-annotations:1.0.2'
+        compile 'com.tmtron:green-annotations-api:1.0.2'
     }
 ```
+
+Note: Green-Annotations version `1.0.2` requires Android-Annotations version `4.4.0` 
 
 ## Details
 
