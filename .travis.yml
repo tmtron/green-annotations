@@ -17,17 +17,17 @@ android:
   components:
     - tools
     - platform-tools
-    - android-17
-    - build-tools-24.0.2
+    - android-21
+    - build-tools-27.0.1
     # needed for the support annotations
     - extra-android-m2repository
 
-before_install:
-  - echo ANDROID_HOME=$ANDROID_HOME
-  - echo TRAVIS=$TRAVIS
-  - ls -l $ANDROID_HOME/extras/android/m2repository/com/android/support
+#before_install:
+#  - echo ANDROID_HOME=$ANDROID_HOME
+#  - echo TRAVIS=$TRAVIS
+#  - ls -l $ANDROID_HOME/extras/android/m2repository/com/android/support
 
 script:
-  - mvn help:all-profiles
-  - mvn help:effective-pom
+#  - mvn help:all-profiles
+#  - mvn help:effective-pom
   - mvn install -B
